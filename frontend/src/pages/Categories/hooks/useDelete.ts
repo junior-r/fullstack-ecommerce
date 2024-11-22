@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
 import { CategoryDeleteUrl } from "src/consts";
 import { usePaginationStore } from "src/store/Categories/pagination";
 import { Categories, Category } from "src/types/categories";
@@ -13,6 +14,7 @@ export default function useDelete() {
         .delete<Category>(CategoryDeleteUrl(category.pk))
         .then((response) => response.data),
     onSuccess: (_, deletedObject) => {
+      toast.success(`Category has been deleted`);
       queryClient.setQueryData<Categories>(
         ["categories", page],
         (categories = {} as Categories) => ({
