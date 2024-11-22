@@ -20,5 +20,4 @@ class UserRetrieveAPIView(RetrieveAPIView):
         return get_object_or_404(User, username=self.request.user.username)
 
     def dispatch(self, request, *args, **kwargs):
-        print(self.request.user)
         return super().dispatch(request, *args, **kwargs)

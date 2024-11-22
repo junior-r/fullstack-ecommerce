@@ -12,7 +12,6 @@ class CategoryListAPIView(ListAPIView):
     permission_classes = [AllowAny]
 
     def dispatch(self, request, *args, **kwargs):
-        print(request.user)
         return super().dispatch(request, *args, **kwargs)
 
 
