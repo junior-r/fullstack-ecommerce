@@ -1,6 +1,8 @@
 from django.contrib.auth.mixins import PermissionRequiredMixin
+from rest_framework import status
 from rest_framework.generics import CreateAPIView, ListAPIView, DestroyAPIView
 from rest_framework.permissions import IsAuthenticated, AllowAny, DjangoModelPermissions
+from rest_framework.response import Response
 
 from Apps.Categories.models import Category
 from Apps.Categories.serializers import CategoryCreateSerializer, CategorySerializer
@@ -24,6 +26,14 @@ class CategoryCreateAPIView(CreateAPIView):
         if serializer.is_valid():
             return serializer.save(user=self.request.user)
         return super().perform_create(serializer)
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            self.perform_create(serializer)
+            headers = self.get_success_headers(serializer.data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
