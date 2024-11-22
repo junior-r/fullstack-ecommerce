@@ -17,7 +17,6 @@ api.interceptors.request.use(
       const isTokenExpired = (token: string) => {
         const payload = JSON.parse(atob(token.split(".")[1]));
         const currentTime = Math.floor(Date.now() / 1000);
-        console.log("Token expira en:", payload.exp - currentTime, "segundos");
         return payload.exp < currentTime;
       };
 
