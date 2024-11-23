@@ -8,6 +8,8 @@ function Register() {
   const usernameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const imageRef = useRef<HTMLInputElement>(null);
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -16,16 +18,23 @@ function Register() {
     const username = usernameRef.current?.value;
     const email = emailRef.current?.value;
     const password = passwordRef.current?.value;
+    const image = imageRef.current?.value;
+
     if (!usernameRef || !email || !password) {
       setLoading(false);
       return;
     }
     try {
-      const response = await api.post("/accounts/register/", {
-        username,
-        email,
-        password,
-      });
+      const response = await api.post(
+        "/accounts/register/",
+        {
+          username,
+          email,
+          password,
+          image,
+        },
+        { headers: { "Content-type": "multipart/form-data" } }
+      );
       if (response.status === 201) {
         navigate("/login");
       }
@@ -39,9 +48,19 @@ function Register() {
     <section className="max-w-screen-xl mx-auto">
       <form
         method="post"
+        encType="multipart/form-data"
         className="max-w-md mx-auto space-y-4"
         onSubmit={(e) => handleSubmit(e)}
       >
+        <div className="flex flex-col gap-4 items-center">
+          <label htmlFor="image">Cargar imagen</label>
+          <input
+            type="file"
+            accept="image/png, image/jpg, image/jpeg, image/webp"
+            className="file-input file-input-bordered w-full max-w-xs"
+            ref={imageRef}
+          />
+        </div>
         <div>
           <label htmlFor="username">Username</label>
           <input
