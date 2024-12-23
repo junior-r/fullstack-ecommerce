@@ -17,7 +17,7 @@ class UserSerializer(serializers.ModelSerializer):
 class UserCreateSerializer(serializers.ModelSerializer):
     image = serializers.FileField(validators=[
         small_file_size_custom_validator, FileExtensionValidator(['png', 'jpg', 'jpeg', 'webp'])
-    ])
+    ], required=False)
 
     class Meta:
         model = User
