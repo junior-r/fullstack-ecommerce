@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { useAuthenticationStore } from "src/store/Categories/authentication";
+import { useAuthenticationStore } from "src/store/Auth/authentication";
 
 type NavItem = {
   name: string;
@@ -78,11 +78,13 @@ function Navbar() {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
-              {NavItems.map((item, idx) => (
-                <li key={idx}>
-                  <NavLink to={item.url}>{item.name}</NavLink>
-                </li>
-              ))}
+              {NavItems.map((item, idx) =>
+                show(item) ? (
+                  <li key={idx}>
+                    <NavLink to={item.url}>{item.name}</NavLink>
+                  </li>
+                ) : null
+              )}
             </ul>
           </div>
           <a className="btn btn-ghost text-xl">E-commerce</a>

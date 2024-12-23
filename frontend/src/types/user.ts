@@ -11,4 +11,5 @@ export type User = {
   last_name: string;
   user_permissions: string[];
   username: string;
+  image: string;
 };

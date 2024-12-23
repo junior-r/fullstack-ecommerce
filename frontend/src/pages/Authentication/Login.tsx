@@ -1,7 +1,7 @@
 import Button from "@components/Button";
 import { FormEvent, useRef, useState } from "react";
 import { useNavigate } from "react-router";
-import { useAuthenticationStore } from "src/store/Categories/authentication";
+import { useAuthenticationStore } from "src/store/Auth/authentication";
 import api from "src/utils/api";
 
 function Login() {

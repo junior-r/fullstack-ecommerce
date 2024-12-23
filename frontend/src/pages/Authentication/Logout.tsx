@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { useAuthenticationStore } from "src/store/Categories/authentication";
+import { useAuthenticationStore } from "src/store/Auth/authentication";
 
 function Logout() {
   const clearTokens = useAuthenticationStore((state) => state.clearTokens);

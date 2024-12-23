@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
-import { useAuthenticationStore } from "src/store/Categories/authentication";
+import { useAuthenticationStore } from "src/store/Auth/authentication";
 import { useAuth } from "src/hooks/useAuth";
 
 type Props = {

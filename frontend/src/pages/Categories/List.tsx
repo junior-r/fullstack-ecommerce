@@ -7,7 +7,7 @@ import { Category } from "src/types/categories";
 import Create from "./forms/Create";
 import Delete from "./forms/Delete";
 import useGetList from "./hooks/useGetList";
-import { useAuthenticationStore } from "src/store/Categories/authentication";
+import { useAuthenticationStore } from "src/store/Auth/authentication";
 import { usePermission } from "src/hooks/usePermission";
 
 const categorySkeleton: Category = {

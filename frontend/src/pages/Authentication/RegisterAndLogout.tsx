@@ -1,4 +1,4 @@
-import { useAuthenticationStore } from "src/store/Categories/authentication";
+import { useAuthenticationStore } from "src/store/Auth/authentication";
 import Register from "./Register";
 
 function RegisterAndLogout() {

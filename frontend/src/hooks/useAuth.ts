@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
-import { useAuthenticationStore } from "src/store/Categories/authentication";
+import { useAuthenticationStore } from "src/store/Auth/authentication";
 import api from "src/utils/api";
 
 export const useAuth = () => {

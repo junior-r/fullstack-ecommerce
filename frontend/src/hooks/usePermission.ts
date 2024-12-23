@@ -1,5 +1,5 @@
 import { jwtDecode } from "jwt-decode";
-import { useAuthenticationStore } from "src/store/Categories/authentication";
+import { useAuthenticationStore } from "src/store/Auth/authentication";
 import { AccessToken } from "src/types/accessToken";
 
 export const usePermission = (permission: string) => {
